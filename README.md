@@ -25,4 +25,5 @@ Users can add items with a name and quantity. Items are saved to local storage.
 ### Search Items in Storage
 ![Search inventory items](images/tracker-list-search.png)
 
-The inventory list updates in real time as the user types.
+The inventory list updates in real time as the user types.<br><br>
+[Return to e-portfolio](https://github.com/AnthonyBaratti/AnthonyBaratti.github.io/tree/main)
