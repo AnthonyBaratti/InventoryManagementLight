@@ -1,0 +1,263 @@
+
+/*
+ *  Anthony Baratti
+ *  11/23/2025
+ *  InventoryManagementLight
+ *  styles.css
+ * 
+ *  Practice Inventory Management with local storage
+ *  simple CRUD UI for HTML/CSS Web app
+ *  Possibly convert it to react later
+ */
+
+/*
+ *  Defines CSS variables/custom properties
+ */
+:root{
+    --bg: #0b0d10;
+    --card: #12161b;
+    --muted: #9aa4af;
+    --text: #e7edf3;
+    --accent: #5dd6ff;
+    --accent-2: #a78bfa;
+    --danger: #ff6b6b;
+    --radius: 16px;
+}
+
+/*
+ * Reset rule makes layout predictable
+ */
+* { box-sizing: border-box }
+
+/*
+ * Styles the page and base text,
+ * Removes default margins with 0
+ * font-family uses device natives for clean modern look
+ * background creates radial gradient (top right, bottom left, center)
+ */
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background: radial-gradient(1000px circle at top right, #142033, transparent),
+        radial-gradient(900px circle at bottom left, #1b1433, transparent),
+        var(--bg);
+        color: var(--text);
+}
+
+/*
+ * Matches <main class="app"> in index.html
+ * app class
+ * max-width constrains too wide
+ * margin centers with top spacing
+ * padding keeps content away from edges
+ */
+.app{
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/*
+ * header class
+ * Gives a card hero look with:
+ * subtle border, rounded corners (--radius),
+ * gradient background, shadow to lift it
+ */
+.header {
+    background: linear-gradient(135deg, #0f172a, #111827);
+    border: 1px solid #1f2947;
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.header p {
+    margin: 6px 0 0;
+    color: var(--muted);
+}
+
+/*
+ * controls class
+ * Similar style to header
+ */
+.controls {
+    margin-top: 16px;
+    background:var(--card);
+    border: 1p solid #1f2937;
+    padding: 16px;
+    border-radius: var(--radius);
+}
+
+/*
+ * add-form class
+ * grid makes a 3 column grid (1fr name input takes reamining space)
+ * quantity input fixed to 120px
+ * button fixed with 120px width
+ */
+.add-form {
+    display: grid;
+    grid-template-columns: 1fr 120px 120px;
+    gap: 10px;
+}
+
+/*
+ * targets input in add-form and search-row
+ * full width
+ * visible rounded borders
+ */
+.add-form input, .search-row input {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 1rem;
+    color: var(--text);
+    background: #0f1318;
+    border: 1px solid #26303a;
+    border-radius: 12px;
+    outline: none;
+}
+
+/*
+ * input:focus changes the input accent (glows) when selected
+ */
+.add-form input:focus, .search-row input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3p rgba(93, 214, 255, .15);
+}
+
+/*
+ * GLOBAL button variables (all buttons inherit)
+ * gradient, rounded corners, bold text, pointer cursor
+ */
+button {
+    padding: 10px 12px;
+    font-size: 1rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    border: none;
+    border-radius: 12px;
+    color: #041018;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/*
+ * Hover effect slightly brighter
+ */
+button:hover {
+    filter: brightness(1.05);
+}
+
+/*
+ * search-row class
+ * 2 column grid
+ * search input stretches
+ * clear all button
+ */
+.search-row {
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/*
+ * danger class
+ * darker background
+ * red text
+ */
+button.danger {
+    background: #11161b;
+    color: var(--danger);
+    border: 1px solid #2a333d;
+}
+
+
+/*
+ * list-section class
+ * min-height still looks like a box even when empty
+ */
+.list-section {
+    margin-top: 16px;
+    background: var(--card);
+    border: 1px solid #1f2937;
+    padding: 8px;
+    border-radius: var(--radius);
+    min-height: 120px;
+}
+
+/*
+ * list class
+ * Removes default UL styling (none)
+ */
+.list{
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+/*
+ * item class
+ * Rows that JS inserts
+ * Grid template allows item name to grow (1fr)
+ * qty badge size fits content (auto)
+ * minus, plus, delete buttons (auto)
+ * bottom border for separation
+ */
+.item {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    border-bottom: 1px solid #1f2937;
+}
+
+.item:last-child {
+    border-bottom: none;
+}
+
+.item .name { font-weight: 600; }
+
+/*
+ * .badge class placeholder
+ * Might be used later to display a badge, for example
+ * [+] [5] [-]
+ */
+.badge {
+    padding: 6px 10px;
+    background: #0f1318;
+    border: 1px solid #26303a;
+    border-radius: 999px;
+    font-variant-numeric: tabular-nums;
+}
+
+.icon-btn:hover {
+    border-color: var(--accent);
+}
+
+/*
+ * empty class (for id emptyState)
+ * JS turns on when no items to display
+ */
+.empty {
+    padding: 20px;
+    text-align: center;
+    color: var(--muted);
+    display: none;
+}
+
+/*
+ * footer class
+ * muted text, small font, right aligned.
+ */
+.footer {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    text-align: right;
+}
+

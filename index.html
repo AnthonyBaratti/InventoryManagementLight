@@ -1,0 +1,109 @@
+<!--
+Anthony Baratti
+11/23/25
+InventoryManagementLight
+index.html
+
+Practice Inventory Management with local storage
+simple CRUD UI for HTML/CSS Web app
+Possibly convert it to react later
+-->
+
+<!--Determines what type of document, uses HTML 5 with language english-->
+<!doctype html>
+
+<!-- Starts the html, must close with </html> -->
+<html lang="en">
+
+    <head>
+        <!-- Character encoding UTF-8 is standard ASCII backwards compatible & required for modern web features-->
+         <meta charset="UTF-8" />
+
+        <!-- Viewport makes layout scal correctly for small screens (tablets/mobile)-->
+         <meta name = "viewport"
+         content = "width=device-width, initial-scale=1.0" />
+
+         <!--Title for page-->
+         <title>Inventory Tracker Lite</title>
+
+         <!-- Links the CSS style sheet so styling is applied: Relationship (rel) is stylesheet, 
+          hypertext reference is styles.css (what to load)-->
+        <link rel="stylesheet"
+        href="styles.css" />
+    </head>
+
+    <body>
+        <!-- Main Application Container -->
+         <main class="app">
+            <!-- Top header / title area -->
+             <header class="header">
+                <h1>Inventory Tracker Lite</h1>
+                <p>Fast CRUD Practice, data saves locally.</p>
+             </header>
+
+             <!-- Controls section for adding, searching, clearing -->
+              <section class="controls">
+
+                <!-- Form for adding new items -->
+                <form id="addForm" class="add-form">
+                    <!-- Item Name -->
+                    <input
+                        id="nameInput"
+                        type="text"
+                        placeholder="Item name"
+                        required 
+                    />
+                    
+                    <!-- Quantity number -->
+                    <input 
+                        id="qtyInput"
+                        type="number"
+                        min="0"
+                        value="1"
+                        required
+                    />
+
+                    <!-- Submit button triggers the form submit event in JS -->
+                    <button type="submit">
+                        Add Item
+                    </button>   
+                </form>
+
+                <!-- Search & Clear All row -->
+                <div class="search-row">
+                    <input 
+                        id="searchInput"
+                        type="text"
+                        placeholder="Search items..."
+                    />
+
+                    <!-- Clear all items button -->
+                    <button
+                        id="clearAllBtn"
+                        class="danger"
+                        type="button">
+                    Clear All</button>
+                </div>
+              </section>
+
+              <!-- List Area -->
+            <section class="list-section">
+                <!-- Items will be injected here by JS -->
+                <ul id="list" class="list"></ul>
+
+                <!-- Shown only whne there are no items -->
+                <div id="emptyState" class="empty">
+                    No items yet. Add your first one above.
+                </div>
+            </section>
+
+            <!-- Footer for item count -->
+            <footer class="footer">
+                <span id="count"></span>
+            </footer>
+         </main>
+
+         <!-- JS script goes last to let all HTML elements load first, then can safely run actions -->
+         <script src="app.js"></script>
+    </body>
+</html>
