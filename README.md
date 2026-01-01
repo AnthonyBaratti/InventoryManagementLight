@@ -16,3 +16,13 @@ A lightweight inventory management web app built with vanilla HTML, CSS, and Jav
 
 ## Purpose
 Portfolio project to practice frontend fundamentals, state management, and DOM manipulation.
+
+### Added Items to Inventory
+![Add inventory item](images/tracker-lite-list.png)
+
+Users can add items with a name and quantity. Items are saved to local storage.
+
+### Search Items in Storage
+![Search inventory items](images/tracker-list-search.png)
+
+The inventory list updates in real time as the user types.
